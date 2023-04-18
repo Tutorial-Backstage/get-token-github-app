@@ -1,0 +1,27 @@
+name: Content Change Validation
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    branches:
+      - main
+
+jobs:
+  content-change-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate Token from GitHub App
+        id: generate-token-github-app
+        uses: padupe/action-generate-token-github-app@master
+        with:
+          appId: ${{ secrets.CREDENTIALS_GITHUB_APP_ID }}
+          installationId: ${{ secrets.CREDENTIALS_GITHUB_APP_INSTALLATION_ID }}
+          privateKey: ${{ secrets.CREDENTIALS_GITHUB_APP_PRIVATE_KEY }}
+          
+      - name: Echo Output
+        echo ${{ steps.generate-token-github-app.outputs.token }}
+
+      - name: Content Change Validation
+        uses: padupe/action-content-change-validation@1.1.4
+        with:
+          directoryOrFile: .github/workflows
+          gitHubToken: ${{ steps.generate-token-github-app.outputs.token }}
