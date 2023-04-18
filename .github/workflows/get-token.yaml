@@ -18,10 +18,10 @@ jobs:
           privateKey: ${{ secrets.GH_PRIVATE_KEY }}
       
       - name: Echo
-        run: echo ${{ steps.generate-token-github-app.outputs.token }}
+        run: echo ${{ steps.generate-token-github-app.outputs.gitHubToken }}
       
       - name: Content Change Validation
         uses: padupe/action-content-change-validation@1.1.4
         with:
           directoryOrFile: .github/workflows
-          gitHubToken: ${{ steps.generate-token-github-app.outputs.token }}
+          gitHubToken: ${{ steps.generate-token-github-app.outputs.gitHubToken }}
