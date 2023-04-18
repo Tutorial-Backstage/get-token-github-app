@@ -16,10 +16,10 @@ jobs:
           appId: ${{ secrets.CREDENTIALS_GITHUB_APP_ID }}
           installationId: ${{ secrets.CREDENTIALS_GITHUB_APP_INSTALLATION_ID }}
           privateKey: ${{ secrets.CREDENTIALS_GITHUB_APP_PRIVATE_KEY }}
-          
-      - name: Echo Output
-        echo ${{ steps.generate-token-github-app.outputs.token }}
-
+      
+      - name: Echo
+        run: echo ${{ steps.generate-token-github-app.outputs.token }}
+      
       - name: Content Change Validation
         uses: padupe/action-content-change-validation@1.1.4
         with:
