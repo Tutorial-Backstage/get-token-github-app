@@ -13,9 +13,9 @@ jobs:
         id: generate-token-github-app
         uses: padupe/action-generate-token-github-app@master
         with:
-          appId: ${{ secrets.CREDENTIALS_GITHUB_APP_ID }}
-          installationId: ${{ secrets.CREDENTIALS_GITHUB_APP_INSTALLATION_ID }}
-          privateKey: ${{ secrets.CREDENTIALS_GITHUB_APP_PRIVATE_KEY }}
+          appId: ${{ secrets.GH_APP_APP_ID }}
+          installationId: ${{ secrets.GH_APP_INSTALLATION_ID }}
+          privateKey: ${{ secrets.GH_PRIVATE_KEY }}
       
       - name: Echo
         run: echo ${{ steps.generate-token-github-app.outputs.token }}
