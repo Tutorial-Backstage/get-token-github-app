@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Generate Token from GitHub App
         id: generate-token-github-app
-        uses: padupe/action-generate-token-github-app@master
+        uses: padupe/action-generate-token-github-app@1.1.3
         with:
           appId: ${{ secrets.GH_APP_APP_ID }}
           installationId: ${{ secrets.GH_APP_INSTALLATION_ID }}
